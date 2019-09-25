@@ -44,8 +44,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onChanged(PlayersData playersData) {
 
-
-
                 itemList.addAll(playersData.getData());
                 itemList.add (null);
                 playersAdapter.notifyDataSetChanged();
