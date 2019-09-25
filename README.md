@@ -14,6 +14,6 @@ Data shown in recyclerview
 The app have one activity call Main activity which displays data through recyclerview 
 PlayerAdapter for utilize multi item recyclerview , adapter have two item :
 1. row_players : That displays player information 
-2. row_loading_item : That have a load indicator, Added at the end of the list and deleted when you move to the next page
+2. row_loading_item :  load indicator, Added at the end of the list and deleted when user move to the next page
 
 ![APP](https://github.com/AbdallahMustafaQasem/BasketballPlayers/blob/master/app/src/main/res/drawable-v24/Capture0.PNG?raw=true)
