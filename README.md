@@ -16,4 +16,4 @@ PlayerAdapter for utilize multi item recyclerview , adapter have two item :
 1. row_players : That displays player information 
 2. row_loading_item :  load indicator, Added at the end of the list and deleted when user move to the next page
 
-![APP](https://github.com/AbdallahMustafaQasem/BasketballPlayers/blob/master/app/src/main/res/drawable-v24/Capture0.PNG?raw=true)
+![APP](https://github.com/AbdallahMustafaQasem/BasketballPlayers/blob/master/app/src/main/res/drawable-v24/capture.PNG?raw=true)
