@@ -12,4 +12,6 @@ its tack two parameter :
 
 Data shown in recyclerview 
 The app have one activity call Main activity which displays data through recyclerview 
-
+PlayerAdapter for utilize multi item recyclerview , adapter have two item :
+1. row_players : That displays player information 
+2. row_loading_item : That have a load indicator  
