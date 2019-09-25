@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
@@ -89,19 +90,21 @@ public class PlayersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
             switch (datum.getPosition()) {
                 case "G-F":
-                    viewHolder.itemView.setBackgroundColor(Color.parseColor("#62FF00"));
+
+                    viewHolder.itemView.setBackgroundColor(ContextCompat.getColor(context,R.color.colorGreen));
+
                     break;
                 case "C":
-                    viewHolder.itemView.setBackgroundColor(Color.parseColor("#FF9800"));
+                    viewHolder.itemView.setBackgroundColor(ContextCompat.getColor(context,R.color.colorOrange));
                     break;
                 case "F":
-                    viewHolder.itemView.setBackgroundColor(Color.parseColor("#673AB7"));
+                    viewHolder.itemView.setBackgroundColor(ContextCompat.getColor(context,R.color.colorPurple));
                     break;
                 case "G":
-                    viewHolder.itemView.setBackgroundColor(Color.parseColor("#E91E63"));
+                    viewHolder.itemView.setBackgroundColor(ContextCompat.getColor(context,R.color.colorRed));
                     break;
                 default:
-                    viewHolder.itemView.setBackgroundColor(Color.parseColor("#2196F3"));
+                    viewHolder.itemView.setBackgroundColor(ContextCompat.getColor(context,R.color.colorBlue));
             }
         }
 
