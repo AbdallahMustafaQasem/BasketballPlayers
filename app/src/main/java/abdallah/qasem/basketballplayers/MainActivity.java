@@ -40,12 +40,12 @@ public class MainActivity extends AppCompatActivity {
         initRecyclerView();
         mMainActivityViewModel = ViewModelProviders.of(this).get(MainActivityViewModel.class);
 
-        mMainActivityViewModel.getPage((0), "20").observe(this, new Observer<PlayersData>() {
+        mMainActivityViewModel.getPage((currentPage), "20").observe(this, new Observer<PlayersData>() {
             @Override
             public void onChanged(PlayersData playersData) {
 
 
-                itemList.addAll(playersData.getData());
+
                 itemList.addAll(playersData.getData());
                 itemList.add (null);
                 playersAdapter.notifyDataSetChanged();
