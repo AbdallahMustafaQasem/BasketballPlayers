@@ -1,7 +1,6 @@
-package abdallah.qasem.basketballplayers.adapters;
+package abdallah.qasem.basketballplayers.view.adapters;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import abdallah.qasem.basketballplayers.R;
+import abdallah.qasem.basketballplayers.helpers.ColorsHelper;
 import abdallah.qasem.basketballplayers.models.Datum;
 
 
@@ -86,26 +86,7 @@ public class PlayersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             // Player Image
             String ImageURL = "https://cdn2.thecatapi.com/images/" + datum.getId() + ".jpg";
             Picasso.get().load(ImageURL).into(viewHolder.iv_player_image);
-
-
-            switch (datum.getPosition()) {
-                case "G-F":
-
-                    viewHolder.itemView.setBackgroundColor(ContextCompat.getColor(context,R.color.colorGreen));
-
-                    break;
-                case "C":
-                    viewHolder.itemView.setBackgroundColor(ContextCompat.getColor(context,R.color.colorOrange));
-                    break;
-                case "F":
-                    viewHolder.itemView.setBackgroundColor(ContextCompat.getColor(context,R.color.colorPurple));
-                    break;
-                case "G":
-                    viewHolder.itemView.setBackgroundColor(ContextCompat.getColor(context,R.color.colorRed));
-                    break;
-                default:
-                    viewHolder.itemView.setBackgroundColor(ContextCompat.getColor(context,R.color.colorBlue));
-            }
+            viewHolder.itemView.setBackgroundColor(ContextCompat.getColor(context,ColorsHelper.getInstance().getColor(datum.getPosition())));
         }
 
         else if (holder instanceof LoadingViewHolder) {

@@ -1,4 +1,4 @@
-package abdallah.qasem.basketballplayers;
+package abdallah.qasem.basketballplayers.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -7,15 +7,19 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
 
 
 import java.util.ArrayList;
-import abdallah.qasem.basketballplayers.adapters.PlayersAdapter;
+
+import abdallah.qasem.basketballplayers.R;
+
 import abdallah.qasem.basketballplayers.models.PlayersData;
-import abdallah.qasem.basketballplayers.viewmodels.MainActivityViewModel;
+import abdallah.qasem.basketballplayers.view.adapters.PlayersAdapter;
+import abdallah.qasem.basketballplayers.viewModels.MainActivityViewModel;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -26,10 +30,11 @@ public class MainActivity extends AppCompatActivity {
     private PlayersAdapter playersAdapter;
     private MainActivityViewModel mMainActivityViewModel;
     private ArrayList<Object> itemList = new ArrayList<>();
-    int pasteVisibleItems, visibleItemCount, totalItemCount ;
-    int currentPage = 0 ;
+    int pasteVisibleItems, visibleItemCount, totalItemCount;
+    int currentPage = 0;
     private boolean loading = true;
-    ProgressBar progressBar ;
+    ProgressBar progressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,22 +50,24 @@ public class MainActivity extends AppCompatActivity {
             public void onChanged(PlayersData playersData) {
 
                 itemList.addAll(playersData.getData());
-                itemList.add (null);
+                itemList.add(null);
                 playersAdapter.notifyDataSetChanged();
                 progressBar.setVisibility(View.GONE);
+
             }
         });
 
 
 
-        mRecyclerView.addOnScrollListener (new RecyclerView.OnScrollListener () {
+
+        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 if (dy > 0) //check for scroll down
                 {
-                    visibleItemCount = linerLayoutManager.getChildCount ();
-                    totalItemCount = linerLayoutManager.getItemCount ();
-                    pasteVisibleItems = linerLayoutManager.findFirstVisibleItemPosition ();
+                    visibleItemCount = linerLayoutManager.getChildCount();
+                    totalItemCount = linerLayoutManager.getItemCount();
+                    pasteVisibleItems = linerLayoutManager.findFirstVisibleItemPosition();
 
                     if (loading) {
                         if ((visibleItemCount + pasteVisibleItems) >= totalItemCount) {
@@ -70,13 +77,13 @@ public class MainActivity extends AppCompatActivity {
                                 @Override
                                 public void onChanged(PlayersData playersData) {
 
-                                   // Remove loading indicator
-                                    itemList.remove (itemList.size () - 1);
-                                    playersAdapter.notifyItemRemoved (itemList.size () - 1);
+                                    // Remove loading indicator
+                                    itemList.remove(itemList.size() - 1);
+                                    playersAdapter.notifyItemRemoved(itemList.size() - 1);
                                     itemList.addAll(playersData.getData());
                                     playersAdapter.notifyDataSetChanged();
                                     // Add loading indicator
-                                    itemList.add (null);
+                                    itemList.add(null);
                                     loading = true;
                                 }
                             });
@@ -91,8 +98,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void initRecyclerView() {
         playersAdapter = new PlayersAdapter(MainActivity.this, itemList);
-         linerLayoutManager = new LinearLayoutManager(this);
+        linerLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(linerLayoutManager);
         mRecyclerView.setAdapter(playersAdapter);
     }
+
+
 }

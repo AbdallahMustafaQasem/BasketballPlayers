@@ -1,4 +1,4 @@
-package abdallah.qasem.basketballplayers.viewmodels;
+package abdallah.qasem.basketballplayers.viewModels;
 
 import android.app.Application;
 
@@ -15,6 +15,7 @@ public class MainActivityViewModel extends AndroidViewModel {
 
     private MutableLiveData<PlayersData> mPlayersData;
 
+
     public MainActivityViewModel(@NonNull Application application) {
         super(application);
         mPlayersData = PlayersRepositories.getInstance().getPlayersData(0, "20");
@@ -23,9 +24,11 @@ public class MainActivityViewModel extends AndroidViewModel {
 
     public  LiveData<PlayersData> getPage (int page , String per_page)
     {
+
         mPlayersData =  PlayersRepositories.getInstance().getPlayersData(page, per_page);
         return mPlayersData;
     }
+
 
 
     public LiveData<PlayersData> getPlayersData() {
